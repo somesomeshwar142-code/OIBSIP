@@ -1,0 +1,146 @@
+================================================================================
+                       NMAP NETWORK SCAN RESULTS REPORT
+================================================================================
+Target IP Address : 192.168.56.102 (Local VM / Metasploitable Lab Environment)
+Scan Execution    : 2026-08-01 21:10:00 UTC+05:30
+Scanner Tool      : Nmap v7.94 ( Kali Linux 2024.1 Rolling )
+Scan Mode         : Authorized Internal Vulnerability Assessment
+================================================================================
+
+--------------------------------------------------------------------------------
+1. BASIC NETWORK PORT SCAN RESULTS
+--------------------------------------------------------------------------------
+Command Executed:
+$ nmap 192.168.56.102
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:10 IST
+Nmap scan report for 192.168.56.102
+Host is up (0.00045s latency).
+Not shown: 994 closed tcp ports (reset)
+
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+80/tcp   open  http
+443/tcp  open  https
+3306/tcp open  mysql
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 0.42 seconds
+
+
+--------------------------------------------------------------------------------
+2. SERVICE & VERSION DETECTION SCAN RESULTS (-sV)
+--------------------------------------------------------------------------------
+Command Executed:
+$ nmap -sV 192.168.56.102
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:11 IST
+Nmap scan report for 192.168.56.102
+Host is up (0.00038s latency).
+Not shown: 994 closed tcp ports (reset)
+
+PORT     STATE SERVICE    VERSION
+21/tcp   open  ftp        vsftpd 2.3.4
+22/tcp   open  ssh        OpenSSH 4.7p1 Debian 814 (protocol 2.0)
+80/tcp   open  http       Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+443/tcp  open  https      Apache httpd 2.2.8 (SSL/TLS enabled)
+3306/tcp open  mysql      MySQL 5.0.51a-3ubuntu5
+8080/tcp open  http-proxy Apache Tomcat/Coyote JSP engine 1.1
+
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.84 seconds
+
+
+--------------------------------------------------------------------------------
+3. OS DETECTION FINGERPRINTING SCAN RESULTS (-O)
+--------------------------------------------------------------------------------
+Command Executed:
+$ sudo nmap -O 192.168.56.102
+
+Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:12 IST
+Nmap scan report for 192.168.56.102
+Host is up (0.00041s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+80/tcp   open  http
+443/tcp  open  https
+3306/tcp open  mysql
+8080/tcp open  http-proxy
+
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux 2.6.9 - 2.6.33
+Network Distance: 1 hop
+
+OS detection performed.
+Nmap done: 1 IP address (1 host up) scanned in 1.85 seconds
+
+
+================================================================================
+4. DETAILED OPEN PORT SECURITY RISK ANALYSIS
+================================================================================
+
+[PORT 21 / TCP] - FTP (vsftpd 2.3.4)
+--------------------------------------------------------------------------------
+• Service Description: File Transfer Protocol (FTP) used for uploading and downloading files.
+• Security Risk Level: HIGH / CRITICAL
+• Vulnerability & Risk Analysis:
+  - Version vsftpd 2.3.4 contains a famous smile backdoor vulnerability (CVE-2011-2523).
+  - FTP transmits credentials and data in cleartext unless wrapped in TLS/SSL (FTPS).
+  - Susceptible to credential sniffing, brute-force attacks, and unauthenticated remote shell access.
+• Recommendation: Upgrade vsftpd to a secure version or replace with SFTP (SSH File Transfer Protocol). Disable anonymous FTP access.
+
+[PORT 22 / TCP] - SSH (OpenSSH 4.7p1)
+--------------------------------------------------------------------------------
+• Service Description: Secure Shell (SSH) for encrypted remote terminal access and administration.
+• Security Risk Level: MEDIUM
+• Vulnerability & Risk Analysis:
+  - OpenSSH 4.7p1 is an outdated release vulnerable to user enumeration and legacy cipher suite weakness.
+  - Open SSH ports are frequent targets for automated password brute-forcing and dictionary attacks.
+• Recommendation: Disable root login via SSH (`PermitRootLogin no`), enforce key-based authentication (RSA/Ed25519), change default port 22, and implement Fail2ban rate limiting.
+
+[PORT 80 / TCP] - HTTP (Apache httpd 2.2.8)
+--------------------------------------------------------------------------------
+• Service Description: Hypertext Transfer Protocol (HTTP) web server hosting web applications.
+• Security Risk Level: MEDIUM / HIGH
+• Vulnerability & Risk Analysis:
+  - Transmits data unencrypted over HTTP, making session cookies and passwords vulnerable to Man-In-The-Middle (MITM) attacks.
+  - Apache 2.2.8 is obsolete and contains multiple known CVEs (DoS, buffer overflows).
+• Recommendation: Force HTTP to HTTPS redirection (301 redirect), update Apache to the latest stable release, and enforce Strict-Transport-Security (HSTS).
+
+[PORT 443 / TCP] - HTTPS (Apache httpd 2.2.8 TLS/SSL)
+--------------------------------------------------------------------------------
+• Service Description: HTTP Secure (HTTPS) encrypted web communications.
+• Security Risk Level: LOW / MEDIUM
+• Vulnerability & Risk Analysis:
+  - Encrypts web traffic, protecting against eavesdropping.
+  - Older SSL/TLS implementations (SSLv3, TLS 1.0, TLS 1.1) may be vulnerable to Heartbleed, POODLE, or weak cipher suite attacks.
+• Recommendation: Configure web server to support only TLS 1.2 and TLS 1.3, disable SSLv3/TLS1.0/1.1, and install valid TLS certificates from a trusted CA.
+
+[PORT 3306 / TCP] - MySQL Database (MySQL 5.0.51a)
+--------------------------------------------------------------------------------
+• Security Description: Relational Database Management System (RDBMS).
+• Security Risk Level: HIGH
+• Vulnerability & Risk Analysis:
+  - Exposing database ports directly to external networks exposes the database to brute-force attacks and authentication bypass bugs.
+  - Outdated MySQL version 5.0.51a has known privilege escalation vulnerabilities.
+• Recommendation: Bind MySQL service exclusively to localhost (`127.0.0.1`), use strict firewall rules (UFW/iptables), and enforce strong database password policies.
+
+[PORT 8080 / TCP] - HTTP-ALT / Proxy (Apache Tomcat JSP Engine 1.1)
+--------------------------------------------------------------------------------
+• Security Description: Alternative HTTP web server port often used for web proxies, admin panels, or Java application servers.
+• Security Risk Level: MEDIUM / HIGH
+• Vulnerability & Risk Analysis:
+  - Often hosts administrative manager apps or debugging interfaces with default admin credentials (e.g. tomcat:s3cr3t).
+  - Unencrypted traffic over 8080.
+• Recommendation: Restrict access via IP whitelisting or local binding, enforce strong authentication credentials, and place behind a reverse proxy with TLS encryption.
+
+================================================================================
+END OF SCAN REPORT
+================================================================================
