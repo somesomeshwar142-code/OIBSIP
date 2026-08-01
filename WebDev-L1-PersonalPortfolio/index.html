@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio | Digital Resume</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. STICKY NAVBAR -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Alex<span>.dev</span></a>
+                
+                <div class="menu-toggle" id="mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. HERO / PROFILE SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Hi, I'm <span>Alex Rivers</span></h1>
+                    <div class="hero-role">Full-Stack Frontend Developer</div>
+                    <p class="hero-bio">Building accessible, responsive, and visual web applications with clean code standards and scalable design architectures.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+
+                <div class="hero-avatar-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Alex Rivers Avatar" class="hero-avatar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ABOUT ME SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <p class="section-subtitle">Get to know my journey and background</p>
+            </div>
+
+            <div class="about-card">
+                <p class="about-text">
+                    I am a passionate software developer dedicated to crafting efficient digital products. With a strong foundation in modern web engineering, I enjoy converting complex requirements into seamless, intuitive visual interfaces. My personal interests include open-source contributions, web performance tuning, and exploring modern UI trends.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SKILLS SECTION -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical <span>Skills</span></h2>
+                <p class="section-subtitle">Technologies and tools I work with daily</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fa-brands fa-html5 skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>HTML5</h3>
+                        <p>Semantic Layouts</p>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <i class="fa-brands fa-css3-alt skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>CSS3</h3>
+                        <p>Flexbox & Grid Layouts</p>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <i class="fa-brands fa-js skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>JavaScript</h3>
+                        <p>ES6+ Development</p>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <i class="fa-brands fa-git-alt skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>Git & GitHub</h3>
+                        <p>Version Control</p>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <i class="fa-brands fa-react skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>React</h3>
+                        <p>UI Component Architecture</p>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <i class="fa-solid fa-mobile-screen skill-icon"></i>
+                    <div class="skill-info">
+                        <h3>Responsive Design</h3>
+                        <p>Mobile-First Web Apps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PROJECTS SECTION -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span>Projects</span></h2>
+                <p class="section-subtitle">Selected works from my portfolio</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Product Analytics Platform" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Product Analytics Dashboard</h3>
+                        <p class="project-desc">A modern analytical SaaS application dashboard built with responsive grid systems, SVG charts, and clean UI components.</p>
+                        <div class="project-links">
+                            <a href="https://github.com" target="_blank" class="project-link-btn"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                            <a href="#" class="project-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Landing Page" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Landing Page</h3>
+                        <p class="project-desc">An interactive promotional store page featuring dark mode design systems, modern card galleries, and fluid typography.</p>
+                        <div class="project-links">
+                            <a href="https://github.com" target="_blank" class="project-link-btn"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                            <a href="#" class="project-link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <p class="section-subtitle">Let's discuss opportunities and collaborations</p>
+            </div>
+
+            <div class="contact-box">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Alex Rivers</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>alex.rivers@example.com</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alex Rivers. Built with HTML, CSS & JavaScript.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
