@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuth | Portal Gateway</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="shield-logo">🔒</div>
+            <h1>Secure<span class="highlight">Auth</span></h1>
+            <p>Client-Side Cryptographic Authentication System</p>
+        </div>
+
+        <div class="gateway-actions">
+            <a href="login.html" class="btn btn-primary btn-block">Sign In to Dashboard</a>
+            <a href="register.html" class="btn btn-secondary btn-block">Create New Account</a>
+            <a href="dashboard.html" class="btn btn-outline btn-block">Access Protected Page ↗</a>
+        </div>
+
+        <div class="auth-footer">
+            <p><small>SHA-256 Hashed Passwords & LocalStorage Session Management</small></p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Automatic session check on gateway entry
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = AuthEngine.getSession();
+            if (session) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>
