@@ -9,6 +9,13 @@ The primary goal of network scanning during the reconnaissance phase of ethical 
 
 ---
 
+## Tools Used
+1.Kali Linux
+2.Nmap 
+3.Terminal 
+4.GitHub
+
+---
 ## 🔍 What is Nmap & Why Does Network Scanning Matter?
 
 ### What is Nmap?
