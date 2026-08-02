@@ -3,7 +3,7 @@
 ![Nmap Security Scanning Banner](screenshots/basic_scan.png)
 
 ## 📌 Project Overview
-This repository contains a structured network scanning project and security risk analysis performed using **Nmap (Network Mapper)** inside an authorized local Virtual Machine (VM) laboratory environment (`192.168.56.102`).
+This repository contains a structured network scanning project and security risk analysis performed using **Nmap (Network Mapper)** inside an authorized local Virtual Machine (VM) laboratory environment (`192.168.56.102`) logged in as user `someshwar@kali`.
 
 The primary goal of network scanning during the reconnaissance phase of ethical hacking and cybersecurity auditing is to discover live hosts, identify active open ports, detect running service versions, fingerprint operating systems, and evaluate security risk exposures.
 
@@ -65,21 +65,21 @@ nmap --version
 ### 1. Basic Network Scan
 Identifies the top 1,000 most common TCP ports and their status on the target IP address.
 ```bash
-nmap 192.168.56.102
+someshwar@kali:~$ nmap 192.168.56.102
 ```
 ![Basic Scan Terminal Output](screenshots/basic_scan.png)
 
 ### 2. Service Version Detection Scan (`-sV`)
 Probes open ports to determine exact application service names and version numbers.
 ```bash
-nmap -sV 192.168.56.102
+someshwar@kali:~$ nmap -sV 192.168.56.102
 ```
 ![Service Version Scan Output](screenshots/service_version_scan.png)
 
 ### 3. OS Detection Fingerprinting (`-O`)
 Sends TCP/UDP probes to examine OS stack behavior and determine the remote operating system.
 ```bash
-sudo nmap -O 192.168.56.102
+someshwar@kali:~$ sudo nmap -O 192.168.56.102
 ```
 ![OS Detection Scan Output](screenshots/os_detection_scan.png)
 

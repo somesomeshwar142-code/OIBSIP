@@ -4,6 +4,7 @@
 Target IP Address : 192.168.56.102 (Local VM / Metasploitable Lab Environment)
 Scan Execution    : 2026-08-01 21:10:00 UTC+05:30
 Scanner Tool      : Nmap v7.94 ( Kali Linux 2024.1 Rolling )
+Logged In User    : someshwar@kali
 Scan Mode         : Authorized Internal Vulnerability Assessment
 ================================================================================
 
@@ -11,7 +12,7 @@ Scan Mode         : Authorized Internal Vulnerability Assessment
 1. BASIC NETWORK PORT SCAN RESULTS
 --------------------------------------------------------------------------------
 Command Executed:
-$ nmap 192.168.56.102
+someshwar@kali:~$ nmap 192.168.56.102
 
 Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:10 IST
 Nmap scan report for 192.168.56.102
@@ -33,7 +34,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.42 seconds
 2. SERVICE & VERSION DETECTION SCAN RESULTS (-sV)
 --------------------------------------------------------------------------------
 Command Executed:
-$ nmap -sV 192.168.56.102
+someshwar@kali:~$ nmap -sV 192.168.56.102
 
 Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:11 IST
 Nmap scan report for 192.168.56.102
@@ -58,7 +59,7 @@ Nmap done: 1 IP address (1 host up) scanned in 6.84 seconds
 3. OS DETECTION FINGERPRINTING SCAN RESULTS (-O)
 --------------------------------------------------------------------------------
 Command Executed:
-$ sudo nmap -O 192.168.56.102
+someshwar@kali:~$ sudo nmap -O 192.168.56.102
 
 Starting Nmap 7.94 ( https://nmap.org ) at 2026-08-01 21:12 IST
 Nmap scan report for 192.168.56.102
